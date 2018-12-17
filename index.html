@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 7</title>
+</head>
+
+<body>
+
+  <div>
+    <p id="directions-text">Choose.</p>
+    <p id="userchoice-text"></p>
+
+    <p id="computerchoice-text"></p>
+    <p id="wins-text"></p>
+    <p id="losses-text"></p>
+    <p id="wrong-guesses"></p>
+
+  </div>
+  <script type="text/javascript">
+    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+    var wins = 0;
+    var losses = 0;
+
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var computerChoiceText = document.getElementById("computerchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var wrongGuesses = document.getElementById("wrong-guesses");
+    
+    document.onkeyup = function(event) {
+    wrongGuesses = [];
+    var userGuess = event.key;
+
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+    if (userGuess === computerGuess) {
+      wins++;
+    } else {
+      losses++;
+    }
+    if (userGuess !== computerGuess) {
+      wrongGuesses.push(userGuess);
+    }
+    
+    directionsText.textContent = "";
+
+    userChoiceText.textContent = "You chose: " + userGuess;
+    computerChoiceText.textContent = "The computer chose: " + computerGuess;
+    winsText.textContent = "wins: " + wins;
+    lossesText.textContent = "losses: " + losses;
+    wrongGuesses.textContent = "wrong guesses: " + wrongGuesses;
+    
+  }
+
+  </script>
+</body>
+</html>
